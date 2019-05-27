@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Set a Domain and a Range on a Scale</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script>
+			const positionData = [[1, 7, -4], [6, 3, 8], [2, 8, 3]]
+			const scale = d3.scaleLinear;
+
+			scale.domain([250, 500]);
+			scale.range([10, 150]);
+			const biggestZ = d3.max(positionData, (d) => d[2]);
+			const output = scale(50);
+
+			d3.select('body')
+				.append('h2')
+				.text(biggestZ)
+		</script>
+	</body>
+	</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Create a Linear Scale with D3</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script>
+			const scale = d3.scaleLinear;
+			const output = scale(50);
+
+			d3.select('body')
+				.append('h2')
+				.text(output)
+		</script>
+	</body>
+</html>
