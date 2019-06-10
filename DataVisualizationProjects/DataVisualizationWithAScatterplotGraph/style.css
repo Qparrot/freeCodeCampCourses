@@ -1,0 +1,14 @@
+.tooltip
+{
+  position: absolute;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.legend rect {
+  fill:white;
+  stroke:black;
+  opacity:0.8;
+}
