@@ -6,7 +6,9 @@ const svg = d3.select('#container')
               .append('svg')
               .attr('width', w)
               .attr('height', h)
-              .style('background-color', '#e8e8e8')
+              .style('background-color', '#e8e8e8');
+
+const tooltip = d3.select("body").append("div").attr("class", "tooltip");
 
 // Render 
 const render = data => {
@@ -48,12 +50,29 @@ const xScale = d3.scaleLinear()
       .append('rect')
       .attr('x', (d, i) => xScale(convert(d[0])))
       .attr('y', (d) => yScale(d[1]))
-      .attr('width', 1)
+      .attr('width', 2)
       .attr('height', (d) => h - padding - yScale(d[1]))
       .attr('fill', 'blue')
       .attr('class', 'bar')
       .attr('data-date', (d) => d[0])
       .attr('data-gdp', (d) => d[1])
+      .on('mousemove', function(d) 
+          {
+            tooltip
+              .style('left', d3.event.pageX + 25 + 'px')
+                  .style('top', 350 + 'px')
+
+              .style('display', 'inline-block')
+              .attr('data-date', d[0])
+              .attr('data-gdp', d[1])
+              .html(("Year: " + d[0]) + "<br>" + "GDP: " + (d[1]));
+          })
+      .on('mouseout', function(d)
+          {
+            tooltip
+              .style('display', 'none');
+          })
+
   
   // Add scales to the xAxis
     var x_axis = d3.axisBottom()
