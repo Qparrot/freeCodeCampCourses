@@ -3,6 +3,16 @@ const w = 900;
 const h = 500;
 const padding = 30;
 const colorPalette = ["#a50026", "#d73027", "#f46d43", "#fdae61", "#fee090", "#ffffbf", "#e0f3f8", "#abd9e9", "#74add1", "#4575b4", "#313695"];
+const monthName = ['january', 'february', 'march', 'april', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+
+const heading = d3.select('body')
+		.append('heading');
+	heading.append('h1')
+		.attr('id', 'title')
+		.html('Head map');
+	heading.append('h3')
+		.attr('id', 'description')
+		.html('1753 - 2010: base temperature 8.66`C');
 
 // Create svg caneva 
 const svg = d3.select('body')
@@ -14,7 +24,6 @@ const svg = d3.select('body')
 const toolTip = d3.select('body')
 	.append('div')
 	.attr('class', 'tooltip');
-
 // Build the renderer
 const render = (data) => {
 
@@ -32,6 +41,10 @@ const render = (data) => {
 		.data(data.monthlyVariance)
 		.enter()
 		.append('rect')
+		.attr('class', 'cell')
+		.attr('data-month', (d) => d.month)
+		.attr('data-year', (d) => d.year)
+		.attr('data-temp', (d) => (data.baseTemperature +d.variance).toFixed(2))
 		.attr('height', (h - 2 * padding )/12)
 		.attr('width', w / (d3.max(data.monthlyVariance, (d) => d.year) - (d3.min(data.monthlyVariance, (d) => d.year))))
 		.attr('x', (d) => xScale(d.year))
@@ -69,10 +82,15 @@ const render = (data) => {
 		// Insert the tooltip when the mouse is over the rectangle
 		.on('mousemove', function(d) {
 			toolTip
+				.attr('data-year', d.year)
+				.attr('id', 'tooltip')
 				.style('display', 'inline-block')
-				.style('top', yScale(d.month))
-				.style('left', xScale(d.year))
-				.html(d.variance);
+				.style('top', yScale(d.month) + 3 * padding + 'px')
+				.style('left', xScale(d.year) - 2 * padding + 'px')
+				.html("Temperature: " + (data.baseTemperature + d.variance).toFixed(2) +"<br/> Date: " + monthName[d.month - 1] + ' ' + d.year);
+		})
+		.on('mouseout', function(d) {
+				toolTip.style('display', 'none')
 		})
 	// Declare the Axis
 	var x_axis = d3.axisBottom()
@@ -91,7 +109,20 @@ const render = (data) => {
 		.attr('transform', 'translate(' + padding + ', 0)')
 		.attr('id', 'y-axis')
 		.call(y_axis);
+	
+	svg.append('text')
+		.attr('x', -250)
+		.attr('y', 13)
+		.attr('transform', "rotate(-90)")
+		.style('font-size', '12px')
+		.text('months')
 
+	svg.append('text')
+		.attr('x', w - 65)
+		.attr('y', h - 20)
+		.style('font-size', '12px')
+		.text('years');
+	
 	
 }
 	// Fetch the data and render
