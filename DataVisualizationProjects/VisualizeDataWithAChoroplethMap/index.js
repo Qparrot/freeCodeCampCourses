@@ -1,6 +1,6 @@
 // Constant
 const w = 1000;
-const h = 1000;
+const h = 500;
 
 // heading
 const heading = d3.select('body')
@@ -13,10 +13,10 @@ var svg = d3.select("body")
   		.attr('width', w)
   		.attr('height', h);
 
-var projection = d3.geoMercator().translate([w/2, h/2]).scale(1500).center([1,47]);
+var projection = d3.geoMercator().translate([w/2, h/2]).scale(700).center([-100, 39]);
 var path = d3.geoPath().projection(projection);
 
-var worldmap = d3.json('countries.geojson');
+var worldmap = d3.json('counties.geojson');
 var cities = d3.csv('cities.csv');
 
 Promise.all([worldmap, cities]).then(function(values) {
