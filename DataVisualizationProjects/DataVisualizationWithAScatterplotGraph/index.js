@@ -14,11 +14,12 @@ const svg = d3.select('#main')
 	.attr('width', w)
 	.attr('height', h)
 
+
 // constant tooltip
 const tooltip = d3.select('body')
 	.append('div')
 	.attr('class', 'tooltip')
-
+		
 // render method
 const render = (data) => {
 
