@@ -13,7 +13,8 @@
 		 sudo ogr2ogr -f geojson -where "FID in ('ES', 'FR', 'DE', 'CH', 'BE', 'UK', 'AD', 'LU', 'IT')" countries.geojson ~/Documents/countries/CNTR_RG_10M_2016_4326.geojson
 
 	Milestone: I show the map thanks to the geojson file and the cities thanks to the csv file.
-
+(04.07.2019):
+	- Integrate the map of the North American counties. To do so I needed to change the coordonates of the center and add the file found in the _(link 12)_
  
 ##Difficulties
 
@@ -42,3 +43,5 @@
 9. **a tool that display the geo data as a map:** https://mapshaper.org/
 10. **Download gdal-bin:** http://www.sarasafavi.com/installing-gdalogr-on-ubuntu.html
 11. **Thread - Merging CSV and KML in ogr2ogr?:** https://gis.stackexchange.com/questions/265161/merging-csv-and-kml-in-ogr2ogr
+12. **counties:** https://eric.clst.org/tech/usgeojson/
+13. **Accomplished project:** https://www.highcharts.com/maps/demo/us-counties/dark-unica 

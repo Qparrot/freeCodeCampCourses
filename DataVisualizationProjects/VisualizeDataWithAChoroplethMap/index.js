@@ -2,17 +2,26 @@
 const w = 1000;
 const h = 500;
 
-// heading
+// Create the heading
 const heading = d3.select('body')
 		.append('h1')
 		.attr('id', 'title')
-		.html('France and its neighborhood');
-// The svg
+		.html('Employement rate in all USA per counties');
+
+// Create the svg canvas
 var svg = d3.select("body")
 		.append('svg')
   		.attr('width', w)
   		.attr('height', h);
 
+// Create the Tooltip
+var tooltip = d3.select('body')
+	.append('div')
+	.attr('class', 'tooltip')
+
+
+
+// Create the projection
 var projection = d3.geoMercator().translate([w/2, h/2]).scale(700).center([-100, 39]);
 var path = d3.geoPath().projection(projection);
 
@@ -26,7 +35,15 @@ Promise.all([worldmap, cities]).then(function(values) {
 		.enter()
 		.append('path')
 		.attr('class', 'continent')
-		.attr('d', path);
+		.attr('d', path)
+		// On hover display the tooltip
+		.on('mousemove', (d) => {
+			tooltip.style('display', 'inline-block')
+		})
+		// out hover don't display the tooltip
+		.on('mouseout', (d) => {
+			tooltip.style('display', 'none')
+		});
 	// Points
 	
 	svg.selectAll('circle')
