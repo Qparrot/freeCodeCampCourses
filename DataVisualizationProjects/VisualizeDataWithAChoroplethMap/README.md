@@ -15,7 +15,10 @@
 	Milestone: I show the map thanks to the geojson file and the cities thanks to the csv file.
 (04.07.2019):
 	- Integrate the map of the North American counties. To do so I needed to change the coordonates of the center and add the file found in the _(link 12)_
- 
+(07.07.2019):
+	- Integrate the gradient color, thank to colorhexa.com _(link 14)_. 
+	- Integrate the use of the data from the education array _(link 15)_.
+	
 ##Difficulties
 
 1. Q(30.06.2019) - how to show the map?
@@ -31,6 +34,10 @@
 6. Q(01.07.2019)How can I Show a map with the last version of d3? 
 	A() 			
 				_(link 4,5 & 6)_
+7. Q(07.07.2019) How to compare the to file?
+	A( use the fips, county, State numbers)
+8. Q(07.07.2019) How to make the process faster? It is currently laggy...
+	A()
 #### Useful links
 1. **Project on codepen:** https://codepen.io/freeCodeCamp/pen/EZKqza
 2. **US GEOJSON** https://eric.clst.org/tech/usgeojson/
@@ -45,3 +52,5 @@
 11. **Thread - Merging CSV and KML in ogr2ogr?:** https://gis.stackexchange.com/questions/265161/merging-csv-and-kml-in-ogr2ogr
 12. **counties:** https://eric.clst.org/tech/usgeojson/
 13. **Accomplished project:** https://www.highcharts.com/maps/demo/us-counties/dark-unica 
+14. **colorhexa gradient:** https://www.colorhexa.com/5dcfc0
+
