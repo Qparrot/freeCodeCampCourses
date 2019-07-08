@@ -18,6 +18,10 @@
 (07.07.2019):
 	- Integrate the gradient color, thank to colorhexa.com _(link 14)_. 
 	- Integrate the use of the data from the education array _(link 15)_.
+(08.07.2019):
+	- Add a basic Legend.
+	- Fix the bug with the Shannon county.
+	- V1 Done.
 	
 ##Difficulties
 
