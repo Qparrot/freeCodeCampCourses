@@ -6,17 +6,17 @@ Get to know what is MongoDB and Mongoose.
 
 ## Logs
 
-- (12.07.2019): commit "Start the MongoDB challenges" 
-		- I created the database on mongoDB atlas. _(link 5)_
-		- I updated the package.json file with the version of mongodb et mongoose. _(link 6, 7)_
-		- I created my first schema. _(link 3, 4)_
-		- I created the function to add an array of person. _(link 8)_
+* (12.07.2019): commit "Start the MongoDB challenges" 
+	* I created the database on mongoDB atlas. _(link 5)_
+	* I updated the package.json file with the version of mongodb et mongoose. _(link 6, 7)_
+	* I created my first schema. _(link 3, 4)_
+	* I created the function to add an array of person. _(link 8)_
 
 ## Difficulties
 
-- (12.07.2019): 
-		- I didn't know how to connect to the database. With a serie of trial and error. => SUCCESS.
-		- I use the documentation and thread of stackoverflow to find solution about creating a person schema or multiple person base on an array of Person. At the beginning I thought we needed to use a while loop in the Person.create() function. => SUCCESS
+* (12.07.2019): 
+	* I didn't know how to connect to the database. With a serie of trial and error. => SUCCESS.
+	* I use the documentation and thread of stackoverflow to find solution about creating a person schema or multiple person base on an array of Person. At the beginning I thought we needed to use a while loop in the Person.create() function. => SUCCESS
 
 ## Useful links:
 
