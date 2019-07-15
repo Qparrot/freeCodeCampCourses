@@ -131,9 +131,11 @@ var createManyPeople = function(arrayOfPeople, done) {
 // Use the function argument `personName` as search key.
 
 var findPeopleByName = function(personName, done) {
-  
-  done(null/*, data*/);
-
+  Person.find({name: personName}, function(err, result) {
+    if (err)
+      return done(err);
+    return done(null, result);
+  });
 };
 
 /** 6) Use `Model.findOne()` */
@@ -146,8 +148,11 @@ var findPeopleByName = function(personName, done) {
 // argument `food` as search key
 
 var findOneByFood = function(food, done) {
-
-  done(null/*, data*/);
+  Person.findOne({favoriteFoods: food}, function(err, result) {
+    if(err)
+      return done(err);
+    return done(null, result);
+  })
   
 };
 
@@ -161,8 +166,11 @@ var findOneByFood = function(food, done) {
 // Use the function argument 'personId' as search key.
 
 var findPersonById = function(personId, done) {
-  
-  done(null/*, data*/);
+  Person.findById({_id: personId}, function(err, result) {
+    if(err)
+      return done(err);
+    return done(null, result);
+  })
   
 };
 
@@ -193,8 +201,16 @@ var findPersonById = function(personId, done) {
 
 var findEditThenSave = function(personId, done) {
   var foodToAdd = 'hamburger';
-  
-  done(null/*, data*/);
+  Person.findById({_id: personId}, function(err, result) {
+    if (err)
+      return done(err);
+    result.favoriteFoods.push(foodToAdd);
+    result.save(function(err, result){ 
+      if (err)
+        return done(err);
+      return done(null, result);
+    });
+  });
 };
 
 /** 9) New Update : Use `findOneAndUpdate()` */
