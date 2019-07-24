@@ -1,6 +1,8 @@
 const w = 500;
 const h = 500;
 const sales = d3.json('https://cdn.rawgit.com/freeCodeCamp/testable-projects-fcc/a80ce8f9/src/data/tree_map/video-game-sales-data.json');
+let totalPerPlatform = {};
+let totalSales = 0;
 
 const heading = d3.select('body');
 	heading.append('h1')
@@ -26,4 +28,20 @@ Promise.all([sales]).then(function (results) {
 		.attr('x', w / 2)
 		.attr('y', h / 2)
 		.style('fill', 'red');;
+	
+	// Calculate the number of sales of all games.	
+	let i = 0;
+	while(results[0].children[i])
+	{
+		totalPerPlatform[results[0].children[i].name] = 0; 	
+		results[0].children[i].children.forEach(function(games) {
+			/*totalPerPlatform[results[0].children[i].name] */
+			totalPerPlatform[results[0].children[i].name] += parseInt(games.value);
+			totalSales += parseInt(games.value);
+		});
+		i++;
+	};
+	console.log(totalPerPlatform);
+	console.log(totalSales);
+
 });
